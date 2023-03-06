@@ -1,0 +1,8 @@
+{
+  "createdBy": "fakeemail@fakeserver.com",
+  "description": "Fake Description",
+  "name": "Fake Name",
+  "type": "VEGETARIAN",
+  "numberOfServings": 5,
+  "ingredients": [123,124]
+}

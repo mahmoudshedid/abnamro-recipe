@@ -1,0 +1,9 @@
+{
+  "id": "123",
+  "updatedBy": "fakeemail01@fakeserver.com",
+  "description": "Fake Description Second",
+  "name": "Fake Name Second",
+  "type": "MEAT",
+  "numberOfServings": 4,
+  "ingredients": [123,124,125]
+}

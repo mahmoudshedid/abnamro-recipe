@@ -1,0 +1,6 @@
+rootProject.name = 'recipe'
+include 'domain'
+include 'api'
+include 'data'
+include 'test'
+

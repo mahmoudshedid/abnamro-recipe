@@ -1,0 +1,74 @@
+plugins {
+    id 'java'
+    id 'org.springframework.boot' version '2.7.9'
+    id 'io.spring.dependency-management' version '1.0.15.RELEASE'
+}
+
+repositories {
+    mavenCentral()
+}
+
+allprojects {
+    apply plugin: 'java'
+    apply plugin: 'java-library'
+
+    dependencies {
+        // https://mvnrepository.com/artifact/org.projectlombok/lombok
+        compileOnly 'org.projectlombok:lombok:1.18.26'
+        testCompileOnly 'org.projectlombok:lombok:1.18.26'
+        annotationProcessor 'org.projectlombok:lombok:1.18.26'
+        testAnnotationProcessor 'org.projectlombok:lombok:1.18.26'
+
+        // https://mvnrepository.com/artifact/junit/junit
+        testImplementation 'junit:junit:4.13.2'
+
+    }
+
+    repositories {
+        mavenCentral()
+    }
+
+    test {
+        useJUnitPlatform()
+    }
+}
+
+apply plugin: 'org.springframework.boot'
+
+defaultTasks 'bootRun'
+
+bootRun.ext.activeProfiles = 'default'
+bootRun {
+    doFirst {
+        jvmArgs = ["-Dspring.profiles.active=" + ext.activeProfiles]
+    }
+}
+
+tasks.named("jar") {
+    enabled = false
+}
+
+bootJar {
+    enabled = false
+}
+
+jar {
+    enabled = true
+}
+
+dependencies {
+    implementation project(':domain')
+    implementation project(':api')
+    implementation project(':data')
+
+    implementation 'org.springframework.boot:spring-boot-starter'
+    testImplementation 'org.springframework.boot:spring-boot-starter-test'
+
+    implementation 'org.springframework.boot:spring-boot-starter'
+    implementation 'org.springframework.boot:spring-boot-starter-web'
+    implementation 'org.springframework.boot:spring-boot-starter-validation'
+
+    implementation 'org.springframework.data:spring-data-commons:2.7.8'
+
+    testImplementation 'org.springframework.boot:spring-boot-starter-test'
+}
